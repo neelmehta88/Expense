@@ -27,13 +27,15 @@ namespace Expense.UI
                 addExpense.ExpenseCategory = DDLExpCat.Text.Trim();
                 AddExpenseService addExpenseService = new AddExpenseService();
                 addExpenseService.AddExp(addExpense);
-                LblAddExpMsg.Text = "Recoed Added";
+                Response.Write("<script>alert ('Record added')</script>");
+                //LblAddExpMsg.Text = "Recoed Added";
 
             }
             catch (Exception ex)
             {
 
-                LblAddExpMsg.Text =ex.Message;
+                //Response.Write("<script></script);
+                LblAddExpMsg.Text = ex.Message;
             }
 
         }
