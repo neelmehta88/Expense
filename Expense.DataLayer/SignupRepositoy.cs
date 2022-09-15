@@ -14,7 +14,6 @@ namespace Expense.DataLayer
     public class SignupRepositoy
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ExpManagementConnection"].ConnectionString);
-        //SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["TariningDBConnection"].ConnectionString);
         SqlCommand command = null;
 
         public void Signup(Signup signup)
@@ -38,33 +37,33 @@ namespace Expense.DataLayer
             }
         }
 
-        //public bool Login(Login login)
-        //{
-        //    try
-        //    {
-        //        command = new SqlCommand($"Select * from Signup where Email='{login.Email}' and Password='{login.Password}'",connection);
-        //        connection.Open();
-        //        SqlDataReader dr =  command.ExecuteReader();
-        //        if (dr.HasRows)
-        //        {
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
+        public bool Login(Login login)
+        {
+            try
+            {
+                command = new SqlCommand($"Select * from Signup where Email='{login.Email}' and Password='{login.Password}'", connection);
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
 
-        //    }
-        //    catch (Exception)
-        //    {
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-        //}
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
 
     }

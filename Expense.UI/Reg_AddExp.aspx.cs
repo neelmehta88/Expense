@@ -34,8 +34,8 @@ namespace Expense.UI
             catch (Exception ex)
             {
 
-                //Response.Write("<script></script);
-                LblAddExpMsg.Text = ex.Message;
+                Response.Write("<script>alert('" + ex.Message + "')</script>");
+                //LblAddExpMsg.Text = ex.Message;
             }
 
         }

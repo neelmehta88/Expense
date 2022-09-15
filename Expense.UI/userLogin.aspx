@@ -5,7 +5,7 @@
     <br />
     <div class="conatiner">
         <div class="row">
-            <div class="col-md-6 mx-auto">
+            <div class="col-md-4 mx-auto">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -50,7 +50,7 @@
 
                                 <div class="form-group d-grid gap-2">
                                     
-                                    <asp:Button ID="BtnLogin" class="btn btn-success" runat="server" Text="Login" />
+                                    <asp:Button ID="BtnLogin" class="btn btn-success" runat="server" Text="Login" OnClick="BtnLogin_Click" />
 
                                 </div>
                             
