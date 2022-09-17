@@ -18,7 +18,7 @@ namespace Expense.DataLayer
         {
             try
             {
-                command = new SqlCommand($"Insert into AddExpense (ExpenseDate,Note,Amount,ExpenseCategory) values('{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')",connection);
+                command = new SqlCommand($"Insert into AddExpense values('{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')",connection);
                 connection.Open();
                 command.ExecuteNonQuery();
 
@@ -88,7 +88,8 @@ namespace Expense.DataLayer
                    addExpense = new AddExpense()
                     {
                         AddExpenseId = (int)reader["AddExpenseID"],
-                        ExpenseDate = (DateTime)reader["ExpenseDate"],
+                        //ExpenseDate = (DateTime)reader["ExpenseDate"],
+                        ExpenseDate = reader["Expensedate"].ToString(),
                         Note = reader["Note"].ToString(),
                         Amount = (int)reader["Amount"],
                         ExpenseCategory = reader["ExpenseCategory"].ToString()
@@ -118,7 +119,7 @@ namespace Expense.DataLayer
                 {
                     AddExpense addExpense = new AddExpense();
                     addExpense.AddExpenseId = (int)reader["AddExpenseID"];
-                    addExpense.ExpenseDate = (DateTime)reader["ExpenseDate"];
+                    addExpense.ExpenseDate = reader["ExpenseDate"].ToString();
                     addExpense.Note = reader["Note"].ToString();
                     addExpense.Amount = (int)reader["Amount"];
                     addExpense.ExpenseCategory = reader["ExpenseCategory"].ToString();

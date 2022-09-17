@@ -18,10 +18,10 @@ namespace Expense.UI
         {
             try
             {
-                Expense.Entities.Login login = new Expense.Entities.Login();
+                /*Expense.Entities.Login login = new Expense.Entities.Login();
                 login.Email = txtEmail.Text;
                 login.Password = txtPassword.Text;
-
+*/
 
             }
             catch (Exception)

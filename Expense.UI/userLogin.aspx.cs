@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Expense.BusinessLayer;
+using Expense.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,7 +24,32 @@ namespace Expense.UI
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
+            try
+            {
+                SignupService signupService = new SignupService();
+                Signup signup = new Signup();
+                signup.Email = txtEmail.Text.Trim();
+                signup.Password = txtPwd.Text.Trim();
+                DataTable dt = new DataTable();
+                dt = signupService.Login(signup);
+                if(dt.Rows.Count > 0)
+                {
+                    Response.Redirect("HomePage.aspx");
 
+                }
+                else
+                {
+                    Response.Write("<script>alert('Invalid Credentials');</script>");
+                    
+                }
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

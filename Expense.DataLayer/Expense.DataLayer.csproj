@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddExpenseRepository.cs" />
+    <Compile Include="AdminLoginRepository.cs" />
     <Compile Include="ExpenseCategoryRepository.cs" />
     <Compile Include="SignupRepositoy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

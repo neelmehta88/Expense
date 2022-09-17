@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
+using System.Data.SqlClient; 
 using Expense.Entities;
-
+using System.Configuration;
+using System.Runtime.Remoting.Messaging;
 
 namespace Expense.DataLayer
 {
@@ -15,7 +15,10 @@ namespace Expense.DataLayer
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ExpManagementConnection"].ConnectionString);
         SqlCommand command = null;
-
+        SqlDataAdapter adapter = null;
+        DataTable dt = new DataTable();
+        SqlDataReader reader = null;
+        
         public void Signup(Signup signup)
         {
             try
@@ -37,7 +40,7 @@ namespace Expense.DataLayer
             }
         }
 
-        public bool Login(Login login)
+       /* public bool Signup(Login login)
         {
             try
             {
@@ -52,7 +55,6 @@ namespace Expense.DataLayer
                 {
                     return false;
                 }
-
             }
             catch (Exception)
             {
@@ -63,7 +65,42 @@ namespace Expense.DataLayer
             {
                 connection.Close();
             }
+        }*/
+
+        public DataTable Login(Signup signup)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"Select * from Signup where Email='{signup.Email}' and  Password='{signup.Password}'", connection);
+                adapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+        public DataTable CheckUserExits(Signup signup)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"select * from Signup where Email='{signup.Email}'", connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+
 
 
     }

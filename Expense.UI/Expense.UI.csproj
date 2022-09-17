@@ -2240,6 +2240,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login_UI.aspx" />
     <Content Include="Reg_AddExp.aspx" />
+    <Content Include="Reg_ModAddExp.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2354,6 +2355,13 @@
     </Compile>
     <Compile Include="Reg_AddExp.aspx.designer.cs">
       <DependentUpon>Reg_AddExp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reg_ModAddExp.aspx.cs">
+      <DependentUpon>Reg_ModAddExp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reg_ModAddExp.aspx.designer.cs">
+      <DependentUpon>Reg_ModAddExp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Signup_UI.aspx.cs">
       <DependentUpon>Signup_UI.aspx</DependentUpon>

@@ -46,5 +46,39 @@ namespace Expense.BusinessLayer
         //        throw;
         //    }
         //}
+
+
+        public DataTable Login(Signup signup)
+        {
+            try
+            {
+                return repositoy.Login(signup);
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        /*public DataTable Login(String Email , String Password)
+        {
+
+        }*/
+
+        public DataTable CheckUserExits(Signup signup)
+        {
+            try
+            {
+                return repositoy.CheckUserExits(signup);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

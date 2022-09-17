@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Reg_AddExp.aspx.cs" Inherits="Expense.UI.Reg_AddExp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Reg_ModAddExp.aspx.cs" Inherits="Expense.UI.Reg_ModAddExp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    </asp:Content>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
     <div class="container">
         <div class="row">
             <div class="col-md-5">
@@ -27,6 +26,15 @@
                          <div class="row">
                             <div class="col">
                                 <hr />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:Label ID="Label1" runat="server" Text="AddExpenseID"></asp:Label>
+                                    <asp:TextBox ID="TxtAddExpID" runat="server" CssClass="form-control" TextMode="Singleline"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
 
@@ -91,101 +99,23 @@
 
 
                         <div class="row">
-                            <asp:Button ID="BtnAddExp" runat="server" class="btn btn-primary mx-auto" Text="Add" OnClick="BtnAddExp_Click" />
-                            <%--<div class="col-4">
-                                <asp:Button ID="BtnAddExp" runat="server" class="btn btn-primary mx-auto" Text="Add" OnClick="BtnAddExp_Click" />
+
+                            <div class="col-4 d-grid">
+                                <asp:Button ID="BtnEdit" runat="server" class="btn btn-lg btn-warning" Text="Edit" />
+                            </div>
+                            
+                            <div class="col-4 d-grid">
+                                <asp:Button ID="BtnUpdate" runat="server" class="btn btn-lg btn-success" Text="Update" />
                             </div>
 
-                            <div class="col-4">
-                                <asp:Button ID="BtnUpdExp" runat="server" class="btn btn-warning" Text="Update" />
+                            <div class="col-4 d-grid">
+                                <asp:Button ID="BtnDelete" runat="server" class="btn btn-lg btn-danger" Text="Delete" />
                             </div>
 
-                            <div class="col-4">
-                                <asp:Button ID="BtnDelExp" runat="server" class="btn btn-danger" Text="Delete" />
-                            </div>--%>
-
-                            <br />
                             <asp:Label ID="LblAddExpMsg" runat="server"></asp:Label>
                         </div>
                      
                        
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-7">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <center>
-                                    <img width="150px" src="image/icon.jpg" class="img-rounded"/>
-                                </center>
-                            </div>
-                        </div>
-
-
-                         <div class="row">
-                            <div class="col">
-                                <center>
-                                    <h5>Expense Record</h5>
-                                </center>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <hr />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <center>
-                                    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
-                                        <AlternatingRowStyle BackColor="White" />
-                                        <Columns>
-                                            <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" />
-                                            <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                                            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
-                                            <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
-                                        </Columns>
-                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                        <SortedDescendingHeaderStyle BackColor="#820000" />
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT [ExpenseDate], [Note], [Amount], [ExpenseCategory] FROM [AddExpense]"></asp:SqlDataSource>
-                                </center>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -21,21 +21,24 @@ namespace Expense.UI
             try
             {
                 AddExpense addExpense = new AddExpense();
-                addExpense.ExpenseDate = DateTime.Parse(TxtDate.Text);
+                //addExpense.ExpenseDate = DateTime.Parse(TxtDate.Text);
+                addExpense.ExpenseDate = TxtDate.Text;
                 addExpense.Note = TxtNote.Text.Trim();
                 addExpense.Amount = int.Parse(TxtAmount.Text);
                 addExpense.ExpenseCategory = DDLExpCat.Text.Trim();
                 AddExpenseService addExpenseService = new AddExpenseService();
                 addExpenseService.AddExp(addExpense);
-                Response.Write("<script>alert ('Record added')</script>");
-                //LblAddExpMsg.Text = "Recoed Added";
+                //Response.Write("<script>alert ('Record added')</script>");
+                LblAddExpMsg.Text = "Recoed Added";
+                //GridView1.DataSource = SqlDataSource1;
+                GridView1.DataBind();
 
             }
             catch (Exception ex)
             {
 
-                Response.Write("<script>alert('" + ex.Message + "')</script>");
-                //LblAddExpMsg.Text = ex.Message;
+                //Response.Write("<script>alert('" + ex.Message + "')</script>");
+                LblAddExpMsg.Text = ex.Message;
             }
 
         }

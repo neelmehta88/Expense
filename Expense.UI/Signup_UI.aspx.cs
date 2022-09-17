@@ -19,26 +19,26 @@ namespace Expense.UI
 
         protected void BtnSignup_Click(object sender, EventArgs e)
         {
-           
-            //try
-            //{
-            //    Signup signup = new Signup();
-            //    signup.FName = txtFName.Text;
-            //    signup.LName = txtLName.Text;
-            //    signup.UName = txtUName.Text;
-            //    signup.Email = txtEmail.Text;
-            //    signup.Password = txtPassword.Text;
 
-            //    SignupService signupService = new SignupService();
-            //    signupService.Signup(signup);
-            //    LblMsg.Text = "Record added";
+            try
+            {
+                Signup signup = new Signup();
+                signup.FName = txtFName.Text;
+                signup.LName = txtLName.Text;
+                signup.UName = txtUName.Text;
+                signup.Email = txtEmail.Text;
+                signup.Password = txtPassword.Text;
 
-            //}
-            //catch (Exception ex)
-            //{
+                SignupService signupService = new SignupService();
+                signupService.Signup(signup);
+                LblMsg.Text = "Record added";
 
-            //    LblMsg.Text = ex.Message;   
-            //}
+            }
+            catch (Exception ex)
+            {
+
+                LblMsg.Text = ex.Message;
+            }
         }
 
         protected void txtFName_TextChanged(object sender, EventArgs e)

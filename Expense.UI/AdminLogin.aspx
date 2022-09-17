@@ -56,7 +56,7 @@
 
                                 <div class="form-group d-grid gap-2">
                                     <br />
-                                    <asp:Button ID="BtnAdminLogin" class="btn btn-info" runat="server" Text="Login" />
+                                    <asp:Button ID="BtnAdminLogin" class="btn btn-info" runat="server" Text="Login" OnClick="BtnAdminLogin_Click" />
                                 </div>
                             </div>
                         </div>
@@ -66,8 +66,15 @@
                     </div>
                 </div>
 
-                <a href="HomePage.aspx"><strong><< Back to home</strong></a>
-                <hr />
+                <strong>
+
+                <a href="HomePage.aspx"><< Back to home </a>
+                <br />
+
+                <a href="HomePage.aspx">
+                <asp:Label ID="LblAdminEr" runat="server"></asp:Label>
+                </a>
+                </strong>&nbsp;<hr />
 
             </div>
         </div>

@@ -38,8 +38,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Label ID="LblUName" runat="server" Text="Username"></asp:Label>
-                                    <asp:TextBox ID="txtUName" placeholder="Username" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
+                                    <asp:TextBox ID="txtEmail" placeholder="EmailID" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
 
                                 <div class="form-group">
@@ -66,8 +66,10 @@
                     </div>
                 </div>
 
-                <a href="HomePage.aspx"><strong><< Back to home</strong></a>
-                <hr />
+                <a href="HomePage.aspx"><strong><< Back to home&nbsp;
+                <asp:Label ID="LblMsg" runat="server"></asp:Label>
+                </strong></a>
+                &nbsp;<hr />
                 
             </div> 
         </div>

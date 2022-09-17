@@ -21,7 +21,7 @@ namespace Expense.UI
             try
             {
                 AddExpense addExpense = new AddExpense();
-                addExpense.ExpenseDate = DateTime.Parse(txtDate.Text);
+                //addExpense.ExpenseDate = DateTime.Parse(txtDate.Text);
                 addExpense.Note = txtNote.Text;
                 addExpense.Amount = int.Parse(txtAmount.Text); 
                 addExpense.ExpenseCategory = txtExpCat.Text;
