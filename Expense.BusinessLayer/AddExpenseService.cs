@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Expense.Entities;
 using Expense.DataLayer;
+using System.Data;
 
 namespace Expense.BusinessLayer
 {
@@ -32,7 +33,7 @@ namespace Expense.BusinessLayer
             }
         }
 
-        public void DeleteExp(int addExpenseID)
+       /* public void DeleteExp(int addExpenseID)
         {
             try
             {
@@ -56,9 +57,9 @@ namespace Expense.BusinessLayer
 
                 throw;
             }
-        }
+        }*/
 
-        public AddExpense GetExpenseByID(int addExpenseID)
+        /*public AddExpense GetExpenseByID(int addExpenseID)
         {
             try
             {
@@ -70,13 +71,78 @@ namespace Expense.BusinessLayer
                 throw;
             }
 
-        }
+        }*/
 
-        public List<AddExpense> GetAllExpenses()
+        /*public List<AddExpense> GetAllExpenses()
         {
             try
             {
                 return repository.GetAllExpenses();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }*/
+
+        /* public string GetExpByCat(string ExpenseCategory)
+         {
+             try
+             {
+                 return repository.GetExpenseByID(ExpenseCategory);
+             }
+             catch (Exception)
+             {
+
+                 throw;
+             }
+         }*/
+
+        public DataTable GetExpById(AddExpense addExpense)
+        {
+            try
+            {
+                return repository.GetExpById(addExpense);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable UpdateExp(AddExpense addExpense)
+        {
+            try
+            {
+                return repository.UpdateExp(addExpense);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable DeleteExp(AddExpense addExpense)
+        {
+            try
+            {
+                return repository.DeleteExp(addExpense);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable CheckExpIDExits(AddExpense addExpense)
+        {
+            try
+            {
+                return repository.CheckExpIDExits(addExpense);
             }
             catch (Exception)
             {

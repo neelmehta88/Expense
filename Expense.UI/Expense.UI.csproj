@@ -2180,6 +2180,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="HomePage.aspx" />
+    <Content Include="Homepage2.aspx" />
+    <Content Include="image\hp.jpeg" />
     <Content Include="image\adminuser.png" />
     <Content Include="image\generaluser.png" />
     <Content Include="image\sign-up.png" />
@@ -2334,6 +2336,13 @@
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Homepage2.aspx.cs">
+      <DependentUpon>Homepage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Homepage2.aspx.designer.cs">
+      <DependentUpon>Homepage2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login_UI.aspx.cs">
       <DependentUpon>Login_UI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2436,6 +2445,9 @@
       <Project>{03030440-0482-48f0-8de1-08d74620430e}</Project>
       <Name>Expense.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Homepage2.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

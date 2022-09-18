@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,14 @@ namespace Expense.DataLayer
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ExpManagementConnection"].ConnectionString);
         SqlCommand command = null;
+        SqlDataAdapter adapter = null;
+
 
         public void AddExp(AddExpense addExpense)
         {
             try
             {
-                command = new SqlCommand($"Insert into AddExpense values('{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')",connection);
+                command = new SqlCommand($"Insert into AddExpense values({addExpense.AddExpenseId},'{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')",connection);
                 connection.Open();
                 command.ExecuteNonQuery();
 
@@ -35,7 +38,7 @@ namespace Expense.DataLayer
             }
         }
 
-        public void DeleteExp(int addExpenseID)
+        /*public void DeleteExp(int addExpenseID)
         {
             try
             {
@@ -52,12 +55,12 @@ namespace Expense.DataLayer
             {
                 connection.Close();
             }
-        }
-        public void UpdateExp(AddExpense addExpense)
+        }*/
+        /*public void UpdateExp(AddExpense addExpense)
         {
             try
             {
-                command = new SqlCommand($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}'", connection);
+                adapter = new SqlDataAdapter($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -71,48 +74,46 @@ namespace Expense.DataLayer
                 connection.Close();
             }
 
-        }
-
-        
-        public AddExpense GetExpenseByID(int addExpenseID)
-        {
-            try
-            {
-                AddExpense addExpense = null;
-                command = new SqlCommand($"select * from AddExpense where AddExpenseID ={addExpenseID}",connection);
-                connection.Open();  
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
+        }*/
+        /* public AddExpense GetExpenseByID(int addExpenseID)
+         {
+             try
+             {
+                 AddExpense addExpense = null;
+                 command = new SqlCommand($"select * from AddExpense where AddExpenseID ={addExpenseID}",connection);
+                 connection.Open();  
+                 SqlDataReader reader = command.ExecuteReader();
+                 if (reader.HasRows)
+                 {
                     reader.Read();
-                   addExpense = new AddExpense()
-                    {
-                        AddExpenseId = (int)reader["AddExpenseID"],
-                        //ExpenseDate = (DateTime)reader["ExpenseDate"],
-                        ExpenseDate = reader["Expensedate"].ToString(),
-                        Note = reader["Note"].ToString(),
-                        Amount = (int)reader["Amount"],
-                        ExpenseCategory = reader["ExpenseCategory"].ToString()
-                    };
-                    
-                }
-                return addExpense;
+                    addExpense = new AddExpense()
+                     {
+                         AddExpenseId = (int)reader["AddExpenseID"],
+                         //ExpenseDate = (DateTime)reader["ExpenseDate"],
+                         ExpenseDate = reader["Expensedate"].ToString(),
+                         Note = reader["Note"].ToString(),
+                         Amount = (int)reader["Amount"],
+                         ExpenseCategory = reader["ExpenseCategory"].ToString()
+                     };
 
-            }
-            
+                 }
+                 return addExpense;
 
-            catch (Exception)
-            {
+             }
 
-                throw;
-            }
-        }
-        public List<AddExpense> GetAllExpenses()
+
+             catch (Exception)
+             {
+
+                 throw;
+             }
+         }*/
+        /*public List<AddExpense> GetAllExpenses()
         {
             try
             {
                 List<AddExpense> list = new List<AddExpense>();
-                command = new SqlCommand($"Select * from AddExpense",connection);
+                command = new SqlCommand($"Select * from AddExpense", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -133,6 +134,105 @@ namespace Expense.DataLayer
                 throw;
             }
 
+        }*/
+
+        /*public string GetExpByCat(string ExpenseCategory)
+        {
+            try
+            {
+                AddExpense addExpense = null;
+                command = new SqlCommand($"Select * from AddExpense where ExpenseCategory={ExpenseCategory}", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    addExpense = new AddExpense()
+                    {
+                        AddExpenseId = (int)reader["AddExpenseID"],
+                        //ExpenseDate = (DateTime)reader["ExpenseDate"],
+                        ExpenseDate = reader["Expensedate"].ToString(),
+                        Note = reader["Note"].ToString(),
+                        Amount = (int)reader["Amount"],
+                        ExpenseCategory = reader["ExpenseCategory"].ToString()
+                    };
+                }
+                return addExpense;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }*/
+
+
+        public DataTable UpdateExp(AddExpense addExpense)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}'", connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+        public DataTable DeleteExp(AddExpense addExpense)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"Delete from AddExpense where AddExpenseId={addExpense.AddExpenseId}", connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        
+        public DataTable GetExpById(AddExpense addExpense)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"select * from AddExpense where AddExpenseID ={addExpense.AddExpenseId}",connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable CheckExpIDExits(AddExpense addExpense)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"Select * from AddExpense where AddExpenseId={addExpense.AddExpenseId}", connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+       
     }
 }

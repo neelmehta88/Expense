@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <img  width="200px" src="image/AddExpense/1.jpg" class="img-thumbnail" />
+                                    <img width="200px" src="image/AddExpense/1.jpg" class="img-thumbnail" />
                                 </center>
                             </div>
                         </div>
@@ -24,33 +24,50 @@
                             </div>
                         </div>
 
-                         <div class="row">
+                        <div class="row">
                             <div class="col">
                                 <hr />
                             </div>
                         </div>
 
-                         <div class="row">
-                            <div class="col">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <asp:Label ID="Label1" runat="server" Text="Expense ID"></asp:Label>
+                                    <div class="input-group">
+                                        <asp:TextBox ID="TxtAddExpID" runat="server"  CssClass="form-control" TextMode="Singleline"></asp:TextBox>
+
+                                        <%--<asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Go</asp:LinkButton>--%>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <%--<div class="col-1">
+                                <div class="form-group">
+                                    <asp:LinkButton ID="LinkButton1" runat="server">Go</asp:LinkButton>
+                                </div>
+                            </div>--%>
+
+
+
+                            <div class="col-6">
                                 <div class="form-group">
                                     <asp:Label ID="LblDate" runat="server" Text="Date"></asp:Label>
-                                    <asp:TextBox ID="TxtDate" runat="server" CssClass="form-control" TextMode="Singleline"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDate" runat="server" placeholder="DD/MM/YYYY" CssClass="form-control" TextMode="Singleline"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="form-group" textmode="SingleLine">
                                     <asp:Label ID="LblNote" runat="server" Text="Note"></asp:Label>
                                     <asp:TextBox ID="TxtNote" runat="server" CssClass="form-control" Placeholder="Enter Note"></asp:TextBox>
                                 </div>
                             </div>
-                        </div>
 
-                         <div class="row">
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="form-group">
                                     <asp:Label ID="LblAmount" runat="server" Text="Amount"></asp:Label>
                                     <asp:TextBox ID="TxtAmount" runat="server" CssClass="form-control" Placeholder="Enter Amount"></asp:TextBox>
@@ -91,7 +108,18 @@
 
 
                         <div class="row">
-                            <asp:Button ID="BtnAddExp" runat="server" class="btn btn-primary mx-auto" Text="Add" OnClick="BtnAddExp_Click" />
+                            <div class="col">
+                                <asp:Button ID="BtnAddExp" runat="server" class="btn btn-sm btn-primary w-100" Text="Add" OnClick="BtnAddExp_Click" Font-Size="Large" />
+                            </div>
+
+                            <%--<div class="col-4">
+                                <asp:Button ID="BtnUpdate" runat="server" class="btn btn-sm btn-success w-100" Text="Update" Font-Size="Large" OnClick="BtnUpdate_Click" />
+                            </div>
+
+                            <div class="col-4">
+                                <asp:Button ID="BtnDelete" runat="server" class="btn btn-sm btn-danger w-100" Text="Delete" Font-Size="Large" OnClick="BtnDelete_Click" />
+                            </div>--%>
+
                             <%--<div class="col-4">
                                 <asp:Button ID="BtnAddExp" runat="server" class="btn btn-primary mx-auto" Text="Add" OnClick="BtnAddExp_Click" />
                             </div>
@@ -107,8 +135,8 @@
                             <br />
                             <asp:Label ID="LblAddExpMsg" runat="server"></asp:Label>
                         </div>
-                     
-                       
+
+
 
 
 
@@ -116,85 +144,105 @@
 
 
                     </div>
-                </div>
             </div>
+        </div>
 
 
-            <div class="col-md-7">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <center>
-                                    <img width="150px" src="image/icon.jpg" class="img-rounded"/>
-                                </center>
-                            </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <img width="150px" src="image/icon.jpg" class="img-rounded" />
+                            </center>
                         </div>
-
-
-                         <div class="row">
-                            <div class="col">
-                                <center>
-                                    <h5>Expense Record</h5>
-                                </center>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <hr />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <center>
-                                    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
-                                        <AlternatingRowStyle BackColor="White" />
-                                        <Columns>
-                                            <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" />
-                                            <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                                            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
-                                            <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
-                                        </Columns>
-                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                        <SortedDescendingHeaderStyle BackColor="#820000" />
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT [ExpenseDate], [Note], [Amount], [ExpenseCategory] FROM [AddExpense]"></asp:SqlDataSource>
-                                </center>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <h5>Expense Record</h5>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="AddExpenseId">
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <Columns>
+                                        <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" InsertVisible="False" ReadOnly="True" />
+                                        <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" />
+                                        <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
+                                        <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
+                                        <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
+                                    </Columns>
+                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                    <SortedDescendingHeaderStyle BackColor="#820000" />
+                                </asp:GridView>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT * FROM [AddExpense]"></asp:SqlDataSource>
+                                <br />
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <%--<asp:Label ID="Label2" runat="server" Text="Expense ID"></asp:Label>--%>
+                                    <div class="input-group">
+                                        <asp:TextBox ID="TextBox1" placeholder="Expense ID" runat="server"  CssClass="form-control" TextMode="Singleline"></asp:TextBox>
+                                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Go</asp:LinkButton>
+                                      </div>
+                        </div>
+
+                        <div class="col-4">
+                                <asp:Button ID="BtnUpdate" runat="server" class="btn btn-sm btn-success w-100" Text="Update" Font-Size="Large" OnClick="BtnUpdate_Click" />
+                            </div>
+
+                            <div class="col-4">
+                                <asp:Button ID="BtnDelete" runat="server" class="btn btn-sm btn-danger w-100" Text="Delete" Font-Size="Large" OnClick="BtnDelete_Click" />
+                            </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </asp:Content>
