@@ -40,5 +40,56 @@ namespace Expense.DataLayer
 
             }
         }
+
+        public DataTable CheckMemberIdExits(Signup signup)
+        {
+            try
+            {
+                adapter =new SqlDataAdapter($"select * from Signup where memberID={signup.memberID}", connection);
+                adapter.Fill(dt);
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable DeleteMem(Signup signup)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"Delete from Signup where memberID={signup.memberID}", connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //public DataTable updateAccStat(Signup signup)
+        //{
+        //    try
+        //    {
+        //        adapter = new SqlDataAdapter($"update Signup set AccountStatus ='{signup.AccountStatus} where memberID={signup.memberID}", connection);
+        //        //command = new SqlCommand($"update Signup set AccountStatus='{signup.AccountStatus} where memberID={signup.memberID}", connection);
+        //        DataTable dt = new DataTable();
+        //        adapter.Fill(dt);
+        //        return dt;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+
+       
     }
 }

@@ -1,5 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Reg_AddExp.aspx.cs" Inherits="Expense.UI.Reg_AddExp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+      /*  $(document).ready(function () {
+            $('#GridView1').DataTable();
+         });*/
+
+        $("#GridView1").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        //$('.table1').DataTable();
+    });
+</script>
+
+
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
@@ -35,7 +49,7 @@
                                 <div class="form-group">
                                     <asp:Label ID="Label1" runat="server" Text="Expense ID"></asp:Label>
                                     <div class="input-group">
-                                        <asp:TextBox ID="TxtAddExpID" runat="server"  CssClass="form-control" TextMode="Singleline"></asp:TextBox>
+                                        <asp:TextBox ID="TxtAddExpID" runat="server"  CssClass="form-control" TextMode="Singleline" ></asp:TextBox>
 
                                         <%--<asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Go</asp:LinkButton>--%>
                                     </div>
@@ -48,7 +62,7 @@
                                 </div>
                             </div>--%>
 
-
+                            <asp:HiddenField ID="HiddenField1" runat="server" />
 
                             <div class="col-6">
                                 <div class="form-group">
@@ -177,8 +191,7 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="AddExpenseId">
-                                    <AlternatingRowStyle BackColor="White" />
+                                <asp:GridView ID="GridView1" class="table table-striped table-bordered table-info" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="AddExpenseId" AllowSorting="True">
                                     <Columns>
                                         <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" InsertVisible="False" ReadOnly="True" />
                                         <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" />
@@ -186,15 +199,6 @@
                                         <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
                                         <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
                                     </Columns>
-                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                    <SortedDescendingHeaderStyle BackColor="#820000" />
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT * FROM [AddExpense]"></asp:SqlDataSource>
                                 <br />

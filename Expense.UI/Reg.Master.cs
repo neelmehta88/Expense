@@ -11,7 +11,29 @@ namespace Expense.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["role"]==null)
+                {
+                    LBUserLogin.Visible = true;
+                    LBSignup.Visible = true;
+                    LinkButton3.Visible = false; //logout
+                    LinkButton7.Visible = false; //hello user
+                }
+                else if (Session["role"].Equals("user"))
+                {
+                    LBUserLogin.Visible = false;
+                    LBSignup.Visible = false;
+                    LinkButton3.Visible = true; //logout
+                    LinkButton7.Visible = true; //hello user
+                    LinkButton7.Text = "Hello" + Session["UName"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
         }
 
        
@@ -29,6 +51,11 @@ namespace Expense.UI
         protected void LBAdminLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("AdminLogin.aspx");
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("userProfile_UI.aspx");
         }
     }
 }

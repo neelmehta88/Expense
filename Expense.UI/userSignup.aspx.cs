@@ -17,7 +17,7 @@ namespace Expense.UI
 
         }
 
-        protected void BtnLogin_Click(object sender, EventArgs e)
+        protected void BtnSignup_Click(object sender, EventArgs e)
         {
             try
             {
@@ -34,7 +34,8 @@ namespace Expense.UI
                         signup.LName = txtLName.Text;
                         signup.UName = txtUName.Text;
                         signup.Email = txtEmail.Text;
-                        signup.Password = txtPwd.Text;
+                      
+                        //signup.Password = txtPwd.Text;
                         signupService.Signup(signup);
                         LblMsg.Text = "Record added";
                             

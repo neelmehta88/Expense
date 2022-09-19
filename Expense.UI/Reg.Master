@@ -37,7 +37,7 @@
     <form id="form1" runat="server">
        <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="Homepage2.aspx">
                     <img src="image/icon.jpg" width="60" height="60"/>
                     Expense Manager 
                 </a>
@@ -49,7 +49,7 @@
                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ">
                         <li class="nav-item active">
-                            <a class="nav-link" href="homepage.aspx">Home</a>
+                            <a class="nav-link" href="Homepage2.aspx">Home</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="#">About Us</a>
@@ -76,7 +76,7 @@
                         </li>
 
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server">Hello user</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Hello user</asp:LinkButton>
 
                         </li>
                     </ul>

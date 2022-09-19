@@ -73,7 +73,7 @@
 
                                 <div class="form-group d-grid gap-2">
 
-                                    <asp:Button ID="BtnLogin" class="btn btn-success" runat="server" Text="Signup" OnClick="BtnLogin_Click" />
+                                    <asp:Button ID="BtnSignup" class="btn btn-success" runat="server" Text="Signup" OnClick="BtnSignup_Click" />
 
                                 </div>
                                 <asp:Label ID="LblMsg" runat="server" Text=""></asp:Label>

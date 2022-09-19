@@ -21,7 +21,7 @@ namespace Expense.DataLayer
         {
             try
             {
-                command = new SqlCommand($"Insert into AddExpense values({addExpense.AddExpenseId},'{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')",connection);
+                command = new SqlCommand($"Insert into AddExpense (AddExpenseId,ExpenseDate,Note,Amount,ExpenseCategory) values({addExpense.AddExpenseId},'{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')",connection);
                 connection.Open();
                 command.ExecuteNonQuery();
 
@@ -38,7 +38,7 @@ namespace Expense.DataLayer
             }
         }
 
-        /*public void DeleteExp(int addExpenseID)
+        public void DeleteExp(int addExpenseID)
         {
             try
             {
@@ -55,12 +55,12 @@ namespace Expense.DataLayer
             {
                 connection.Close();
             }
-        }*/
-        /*public void UpdateExp(AddExpense addExpense)
+        }
+        public void UpdateExp(AddExpense addExpense)
         {
             try
             {
-                adapter = new SqlDataAdapter($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}'", connection);
+                command = new SqlCommand($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}' where AddExpenseId={addExpense.AddExpenseId} " ,connection);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -74,7 +74,7 @@ namespace Expense.DataLayer
                 connection.Close();
             }
 
-        }*/
+        }
         /* public AddExpense GetExpenseByID(int addExpenseID)
          {
              try
@@ -167,24 +167,25 @@ namespace Expense.DataLayer
         }*/
 
 
-        public DataTable UpdateExp(AddExpense addExpense)
-        {
-            try
-            {
-                adapter = new SqlDataAdapter($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}'", connection);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
+        /*public DataTable UpdateExp(AddExpense addExpense)
+         {
+             try
+             {
+                 adapter = new SqlDataAdapter($"Update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}' where AddExpenseId={addExpense.AddExpenseId} ", connection);
+                 DataTable dt = new DataTable();
+                 adapter.Fill(dt);
+                 return dt;
 
-            }
-            catch (Exception)
-            {
 
-                throw;
-            }
-        }
+             }
+             catch (Exception)
+             {
 
-        public DataTable DeleteExp(AddExpense addExpense)
+                 throw;
+             }
+         }*/
+
+        /*public DataTable DeleteExp(AddExpense addExpense)
         {
             try
             {
@@ -198,7 +199,7 @@ namespace Expense.DataLayer
 
                 throw;
             }
-        }
+        }*/
 
         
         public DataTable GetExpById(AddExpense addExpense)

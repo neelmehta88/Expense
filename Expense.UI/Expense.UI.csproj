@@ -2181,6 +2181,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="HomePage.aspx" />
     <Content Include="Homepage2.aspx" />
+    <Content Include="image\8.png" />
+    <Content Include="image\9.png" />
+    <Content Include="image\AddExpense\9.png" />
     <Content Include="image\hp.jpeg" />
     <Content Include="image\adminuser.png" />
     <Content Include="image\generaluser.png" />

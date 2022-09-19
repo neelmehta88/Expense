@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .container-fluid{
-            background-color:black;
-            color:white;
+            /*background-color:black;*/
+           /* color:b;*/
         }
     </style>
 </asp:Content>
@@ -23,9 +23,25 @@
                         </div>
                     </div>
                     <hr />
+
+                    
                     <div class="row">
                         <div class="col-5">
-                            <img src="image/hp.jpeg" class="img-responsive img-fluid" />
+                            <h4>Perfom all the basic opertaions</h4>
+                            <h6>Such as Adding the Expense</h6>
+                            <h6>Updating Expense</h6>
+                            <h6>Delete Expense </h6>
+                        </div>
+
+
+                        <div class="col-7">
+                            <img src="image/9.png" class="img-responsive img-fluid" />
+                        </div>
+                    </div>
+
+                   <%-- <div class="row">
+                        <div class="col-5">
+                            <img src="image/8.png" class="img-responsive img-fluid" />
                         </div>
 
                         <div class="col-7">
@@ -36,45 +52,22 @@
                                     <asp:Button ID="BtnHPLets" runat="server" Text="Lets do it together " CssClass="btn btn-sm btn-primary" OnClick="BtnHPLets_Click" />
                                 </div>
                             </div>
+                        </div>
+                    </div>--%>
 
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td scope="row"></td>
-                                        <td>our</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td scope="row"></td>
-                                        <td>our</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td scope="row"></td>
-                                        <td>our</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <hr />
 
 
 
 
 
 
-                    </div>
+
+
+
+
+
                 </div>
-
-                <hr />
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>

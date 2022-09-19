@@ -112,11 +112,11 @@ namespace Expense.BusinessLayer
             }
         }
 
-        public DataTable UpdateExp(AddExpense addExpense)
+        public void UpdateExp(AddExpense addExpense)
         {
             try
             {
-                return repository.UpdateExp(addExpense);
+                repository.UpdateExp(addExpense);
             }
             catch (Exception)
             {
@@ -125,11 +125,11 @@ namespace Expense.BusinessLayer
             }
         }
 
-        public DataTable DeleteExp(AddExpense addExpense)
+        public void DeleteExp(int addExpenseID)
         {
             try
             {
-                return repository.DeleteExp(addExpense);
+                 repository.DeleteExp(addExpenseID);
             }
             catch (Exception)
             {

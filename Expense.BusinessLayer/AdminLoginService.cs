@@ -30,5 +30,45 @@ namespace Expense.BusinessLayer
                 throw;
             }
         }
+
+        public DataTable CheckMemberIdExits(Signup signup)
+        {
+            try
+            {
+                return repository.CheckMemberIdExits(signup);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable DeleteMem(Signup signup)
+        {
+            try
+            {
+                return repository.DeleteMem(signup);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //public DataTable updateAccStat(Signup signup)
+        //{
+        //    try
+        //    {
+        //        return repository.updateAccStat(signup);
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+
     }
 }

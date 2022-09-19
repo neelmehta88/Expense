@@ -24,7 +24,8 @@ namespace Expense.DataLayer
             try
             {
                
-                command = new SqlCommand($"Insert into Signup values('{signup.FName}','{signup.LName}','{signup.UName}','{signup.Email}','{signup.Password}')",connection);
+                command = new SqlCommand($"Insert into Signup (FName,LName,UName,Email,Password) values('{signup.FName}','{signup.LName}','{signup.UName}','{signup.Email}','{signup.Password}')",connection);
+                command = new SqlCommand($"Insert into Signup (FName,LName,UName,Email,Password) values('{signup.FName}','{signup.LName}','{signup.UName}','{signup.Email}','{signup.Password}')",connection);
                 connection.Open();
                 command.ExecuteNonQuery();
 

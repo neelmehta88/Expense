@@ -13,14 +13,5 @@ namespace Expense.UI
 
     public partial class Homepage2
     {
-
-        /// <summary>
-        /// BtnHPLets control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnHPLets;
     }
 }
