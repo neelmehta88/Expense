@@ -18,11 +18,11 @@ namespace Expense.BusinessLayer
             repository = new AdminLoginRepository();
         }
 
-        public DataTable AdminLogin(AdminMaster adminMaster)
+        public void AdminLogin(AdminMaster adminMaster)
         {
             try
             {
-                return repository.AdminLogin(adminMaster);
+                 repository.AdminLogin(adminMaster);
             }
             catch (Exception)
             {
@@ -44,11 +44,11 @@ namespace Expense.BusinessLayer
             }
         }
 
-        public DataTable DeleteMem(Signup signup)
+        public void DeleteMem(Signup signup)
         {
             try
             {
-                return repository.DeleteMem(signup);
+                repository.DeleteMem(signup);
             }
             catch (Exception)
             {
@@ -57,18 +57,24 @@ namespace Expense.BusinessLayer
             }
         }
 
-        //public DataTable updateAccStat(Signup signup)
-        //{
-        //    try
-        //    {
-        //        return repository.updateAccStat(signup);
-        //    }
-        //    catch (Exception)
-        //    {
+        
 
-        //        throw;
-        //    }
-        //}
+
+
+        public void UpdMemStat(string AccountStatus, int memberID)
+        {
+            try
+            {
+                repository.UpdMemStat(AccountStatus, memberID);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
 
     }
 }

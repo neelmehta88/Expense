@@ -60,9 +60,9 @@
                                         <asp:TextBox ID="txtAccountStat" class="form-control" ReadOnly="True" placeholder="Account Status" runat="server"></asp:TextBox>
 
 
-                                        <asp:LinkButton ID="LBActive" class="btn bg-success ms-1" runat="server"><i class="fa-solid fa-circle-check"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="LBPending" class="btn bg-warning ms-1" runat="server"><i class="fa-regular fa-hourglass-half"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="LBDisable" class="btn bg-danger ms-1" runat="server"><i class="fa-solid fa-ban"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LBActive" class="btn bg-success ms-1" runat="server" OnClick="LBActive_Click"><i class="fa-solid fa-circle-check"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LBPending" class="btn bg-warning ms-1" runat="server" OnClick="LBPending_Click"><i class="fa-regular fa-hourglass-half"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LBDisable" class="btn bg-danger ms-1" runat="server" OnClick="LBDisable_Click"><i class="fa-solid fa-ban"></i></asp:LinkButton>
                                     </div>
                                 </div>
                             </div>

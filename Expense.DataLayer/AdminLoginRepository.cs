@@ -18,13 +18,16 @@ namespace Expense.DataLayer
         DataTable dt = new DataTable();
         SqlDataReader reader = null;
 
-        public DataTable AdminLogin(AdminMaster adminMaster)
+        public void AdminLogin(AdminMaster adminMaster)
         {
             try
             {
-                adapter = new SqlDataAdapter($"Select * from AdminMaster where UserName='{adminMaster.UserName}' and Password='{adminMaster.Password}'", connection);
-                adapter.Fill(dt);
-                return dt;
+                command = new SqlCommand($"Select * from AdminMaster where UserName='{adminMaster.UserName}' and Password='{adminMaster.Password}'", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                
+                //adapter.Fill(dt);
+                //return dt;
 
 
 
@@ -57,14 +60,15 @@ namespace Expense.DataLayer
             }
         }
 
-        public DataTable DeleteMem(Signup signup)
+        public void DeleteMem(Signup signup)
         {
             try
             {
-                adapter = new SqlDataAdapter($"Delete from Signup where memberID={signup.memberID}", connection);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
+                command = new SqlCommand($"Delete from Signup where memberID={signup.memberID}", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                
+                
             }
             catch (Exception)
             {
@@ -89,6 +93,21 @@ namespace Expense.DataLayer
         //        throw;
         //    }
         //}
+
+        public void UpdMemStat(string AccountStatus, int memberID)
+        {
+            try
+            {
+                command = new SqlCommand($"Update Signup SET AccountStatus='{AccountStatus}' where memberID={memberID}", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
        
     }

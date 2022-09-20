@@ -29,8 +29,8 @@ namespace Expense.UI
                 Signup signup = new Signup();
                 AdminLoginService adminLoginService = new AdminLoginService();
                 signup.memberID = int.Parse(txtMemberID.Text);
-                DataTable dt = new DataTable();
-                dt = adminLoginService.DeleteMem(signup);
+               
+                adminLoginService.DeleteMem(signup);
                 GridView1.DataBind();
 
                 txtMemberID.Text = String.Empty;
@@ -49,17 +49,46 @@ namespace Expense.UI
 
         protected void LBActive_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Signup signup = new Signup();
+                AdminLoginService adminLoginService = new AdminLoginService();
+                signup.AccountStatus = txtAccountStat.Text;
+                signup.memberID = int.Parse(txtMemberID.Text);
+                string active = "active";
+                adminLoginService.UpdMemStat(active, int.Parse(txtMemberID.Text));
+               
+                GridView1.DataBind();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
         }
 
         protected void LBPending_Click(object sender, EventArgs e)
         {
+            Signup signup = new Signup();
+            AdminLoginService adminLoginService = new AdminLoginService();
+            signup.AccountStatus = txtAccountStat.Text;
+            signup.memberID = int.Parse(txtMemberID.Text);
+            string Pending = "Pending";
+            adminLoginService.UpdMemStat(Pending, int.Parse(txtMemberID.Text));
 
+            GridView1.DataBind();
         }
 
         protected void LBDisable_Click(object sender, EventArgs e)
         {
+            Signup signup = new Signup();
+            AdminLoginService adminLoginService = new AdminLoginService();
+            signup.AccountStatus = txtAccountStat.Text;
+            signup.memberID = int.Parse(txtMemberID.Text);
+            string Disable = "Disable";
+            adminLoginService.UpdMemStat(Disable, int.Parse(txtMemberID.Text));
 
+            GridView1.DataBind();
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -90,5 +119,6 @@ namespace Expense.UI
                 throw;
             }
         }
+        
     }
 }

@@ -210,7 +210,7 @@
                         <div class="col-4">
                             <%--<asp:Label ID="Label2" runat="server" Text="Expense ID"></asp:Label>--%>
                                     <div class="input-group">
-                                        <asp:TextBox ID="TextBox1" placeholder="Expense ID" runat="server"  CssClass="form-control" TextMode="Singleline"></asp:TextBox>
+                                        <asp:TextBox ID="TextBox1" placeholder="Expense ID" runat="server"  CssClass="form-control" TextMode="Number"></asp:TextBox>
                                         <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Go</asp:LinkButton>
                                       </div>
                         </div>

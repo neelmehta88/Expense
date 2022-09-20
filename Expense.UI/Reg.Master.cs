@@ -26,7 +26,7 @@ namespace Expense.UI
                     LBSignup.Visible = false;
                     LinkButton3.Visible = true; //logout
                     LinkButton7.Visible = true; //hello user
-                    LinkButton7.Text = "Hello" + Session["UName"].ToString();
+                    LinkButton7.Text = "Hello  " + Session["Email"].ToString();
                 }
             }
             catch (Exception)

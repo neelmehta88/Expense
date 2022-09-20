@@ -25,19 +25,22 @@ namespace Expense.UI
                 AdminMaster adminMaster = new AdminMaster();    
                 adminMaster.UserName = txtUName.Text.Trim();
                 adminMaster.Password = txtPwd.Text.Trim();
-                DataTable dt = new DataTable();
-                dt = adminLoginService.AdminLogin(adminMaster);
-                if(dt.Rows.Count > 0)
-                {
-                    Response.Write("<script>alert(' admin logedin....')</script>");
-                    //LblAdminEr.Text = "admin logedin....";
-                }
-                else
-                {
-                    LblAdminEr.Text = "Check credentials ";
-                }
-                
-               
+                adminLoginService.AdminLogin(adminMaster);
+                LblAdminEr.Text = "admin logedin....";
+
+                //DataTable dt = new DataTable();
+                /* dt = adminLoginService.AdminLogin(adminMaster);
+                 if(dt.Rows.Count > 0)
+                 {
+                     Response.Write("<script>alert(' admin logedin....')</script>");
+                     //LblAdminEr.Text = "admin logedin....";
+                 }
+                 else
+                 {
+                     LblAdminEr.Text = "Check credentials ";
+                 }*/
+
+
 
             }
             catch (Exception ex)
