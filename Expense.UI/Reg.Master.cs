@@ -9,6 +9,8 @@ namespace Expense.UI
 {
     public partial class Reg : System.Web.UI.MasterPage
     {
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -65,5 +67,27 @@ namespace Expense.UI
         {
             Response.Redirect("userProfile_UI.aspx");
         }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            /*Session["Email"] = "";
+            Session["UserName"] = "";
+            Session["status"] = "";
+
+            LBUserLogin.Visible = false;
+            LBSignup.Visible = true;*/
+           
+            
+
+            Session.Clear();
+            Response.Redirect("Homepage2.aspx");
+
+        }
+
+        /*protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            
+
+        }*/
     }
 }

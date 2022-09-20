@@ -24,7 +24,7 @@ namespace Expense.DataLayer
             {
                 
                 
-                command = new SqlCommand($"Insert into AddExpense (AddExpenseId,ExpenseDate,Note,Amount,ExpenseCategory) values({addExpense.AddExpenseId},'{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')", connection);
+                command = new SqlCommand($"Insert into AddExpense (AddExpenseId,ExpenseDate,Note,Amount,ExpenseCategory,Email) values({addExpense.AddExpenseId},'{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}','{addExpense.Email}')", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
 
@@ -40,18 +40,20 @@ namespace Expense.DataLayer
                 connection.Close();
             }
         }
-        public void AddExpEmail(AddExpense addExpense)
+        /*public void AddExpEmail(AddExpense addExpense)
         {
             try
             {
-                command = new SqlCommand($"Insert into (Email) AddExpense values ('{addExpense.Email}')", connection);
+                command = new SqlCommand($"Insert into AddExpense ()  values ()", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
             }
             catch (Exception)
             {
 
                 throw;
             }
-        }
+        }*/
         public void UpdateExp(AddExpense addExpense)
         {
             try

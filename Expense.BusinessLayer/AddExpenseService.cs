@@ -33,7 +33,7 @@ namespace Expense.BusinessLayer
             }
         }
 
-        public void AddExpEmail(AddExpense addExpense)
+        /*public void AddExpEmail(AddExpense addExpense)
         {
             try
             {
@@ -44,33 +44,33 @@ namespace Expense.BusinessLayer
 
                 throw;
             }
-        }
-
-       /* public void DeleteExp(int addExpenseID)
-        {
-            try
-            {
-                repository.DeleteExp(addExpenseID);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public void UpdateExp(AddExpense addExpense)
-        {
-            try
-            {
-                repository.UpdateExp(addExpense);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }*/
+
+        /* public void DeleteExp(int addExpenseID)
+         {
+             try
+             {
+                 repository.DeleteExp(addExpenseID);
+             }
+             catch (Exception)
+             {
+
+                 throw;
+             }
+         }
+
+         public void UpdateExp(AddExpense addExpense)
+         {
+             try
+             {
+                 repository.UpdateExp(addExpense);
+             }
+             catch (Exception)
+             {
+
+                 throw;
+             }
+         }*/
 
         /*public AddExpense GetExpenseByID(int addExpenseID)
         {

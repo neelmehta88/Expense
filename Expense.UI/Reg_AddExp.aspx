@@ -189,16 +189,20 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                <asp:GridView ID="GridView1" class="table table-striped table-bordered table-info" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="AddExpenseId" AllowSorting="True" OnRowDataBound="GridView1_RowDataBound">
+                                <asp:GridView ID="GridView1" class="table table-striped table-bordered table-info" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowSorting="True" PageSize="5" >
                                     <Columns>
-                                        <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" InsertVisible="False" ReadOnly="True" />
+                                        <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" />
                                         <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" />
                                         <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                                         <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
                                         <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT * FROM [AddExpense]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT [AddExpenseId], [ExpenseDate], [Note], [Amount], [ExpenseCategory] FROM [AddExpense] WHERE ([Email] = @Email)">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="Email" SessionField="Email" Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
                                 <br />
                             </center>
                         </div>

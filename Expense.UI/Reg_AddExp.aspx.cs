@@ -34,7 +34,7 @@ namespace Expense.UI
             {
                 
                 AddExpense addExpense = new AddExpense();
-                //addExpense.ExpenseDate = DateTime.Parse(TxtDate.Text);
+            
                 AddExpenseService addExpenseService = new AddExpenseService();
                 addExpense.AddExpenseId = int.Parse(TxtAddExpID.Text);
                 addExpense.ExpenseDate = TxtDate.Text;
@@ -42,8 +42,12 @@ namespace Expense.UI
                 addExpense.Amount = int.Parse(TxtAmount.Text);
                 addExpense.ExpenseCategory = DDLExpCat.Text.Trim();
                 //Response.Write("<script>alert ('Record added')</script>");
-                
-                addExpenseService.AddExpEmail(addExpense);
+
+                /* LinkButton linkButton = Master.FindControl("LinkButton7") as LinkButton;
+                 addExpense.Email = linkButton.Text;*/
+                addExpense.Email = Session["Email"].ToString();
+         
+
                 addExpenseService.AddExp(addExpense);
                 LblAddExpMsg.Text = "Recoed Added";
                 GridView1.DataBind();
@@ -181,18 +185,7 @@ namespace Expense.UI
             }
         }
 
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
+        
     }
 
         

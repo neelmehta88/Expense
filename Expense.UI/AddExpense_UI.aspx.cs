@@ -27,7 +27,7 @@ namespace Expense.UI
                 addExpense.ExpenseCategory = txtExpCat.Text;
 
                 AddExpenseService addExpenseService = new AddExpenseService();
-                addExpenseService.AddExp(addExpense);
+                
                 LblMsg.Text = "Recoed Added";
                  
             }
