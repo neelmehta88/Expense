@@ -14,7 +14,10 @@ namespace Expense.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("Homepage2.aspx");
+            }
         }
 
         protected void BtnGo_Click(object sender, EventArgs e)

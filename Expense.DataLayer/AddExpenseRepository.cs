@@ -7,10 +7,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Expense.DataLayer
 {
-    public class AddExpenseRepository
+    public class AddExpenseRepository 
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ExpManagementConnection"].ConnectionString);
         SqlCommand command = null;
@@ -21,6 +22,8 @@ namespace Expense.DataLayer
         {
             try
             {
+                
+                
                 command = new SqlCommand($"Insert into AddExpense (AddExpenseId,ExpenseDate,Note,Amount,ExpenseCategory) values({addExpense.AddExpenseId},'{addExpense.ExpenseDate}','{addExpense.Note}',{addExpense.Amount},'{addExpense.ExpenseCategory}')", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -37,10 +40,24 @@ namespace Expense.DataLayer
                 connection.Close();
             }
         }
+        public void AddExpEmail(AddExpense addExpense)
+        {
+            try
+            {
+                command = new SqlCommand($"Insert into (Email) AddExpense values ('{addExpense.Email}')", connection);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public void UpdateExp(AddExpense addExpense)
         {
             try
             {
+                //var email =Session["Email"].ToString();
+               
                 command = new SqlCommand($"update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}' where AddExpenseId={addExpense.AddExpenseId} ", connection);
              
                 connection.Open();
@@ -110,10 +127,21 @@ namespace Expense.DataLayer
             }
         }
 
-        /*public void AddEmailToAddExp(AddExpense addExpense , Signup signup)
+        public void AddEmailToAddExp(AddExpense addExpense)
         {
+            try
+            {
+                command = new SqlCommand($"Insert into AddExpense (Email) vlaues ('{addExpense.Email}')", connection);
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
 
-        }*/
+                throw;
+            }
+        }
 
         //---------------------------------------------------------------------------------------------------------------------------------
         /*commented code*/

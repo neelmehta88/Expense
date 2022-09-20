@@ -22,10 +22,14 @@ namespace Expense.DataLayer
         {
             try
             {
+                
                 command = new SqlCommand($"Select * from AdminMaster where UserName='{adminMaster.UserName}' and Password='{adminMaster.Password}'", connection);
                 connection.Open();
-                command.ExecuteNonQuery();
-                
+                reader = command.ExecuteReader();
+              
+
+                //command.ExecuteNonQuery();
+
                 //adapter.Fill(dt);
                 //return dt;
 

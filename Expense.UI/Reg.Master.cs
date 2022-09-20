@@ -28,6 +28,14 @@ namespace Expense.UI
                     LinkButton7.Visible = true; //hello user
                     LinkButton7.Text = "Hello  " + Session["Email"].ToString();
                 }
+                else if (Session["role"].Equals("admin"))
+                {
+                    LBUserLogin.Visible = false;
+                    LBSignup.Visible = false;
+                    LinkButton3.Visible = true; //logout
+                    LinkButton7.Visible = true; //hello user
+                    LinkButton7.Text = "Hello  " + Session["UserName"].ToString();
+                }
             }
             catch (Exception)
             {

@@ -3,10 +3,13 @@ using Expense.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+
 
 namespace Expense.UI
 {
@@ -14,8 +17,12 @@ namespace Expense.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Email"] == null)
+            {
+                Response.Redirect("Homepage2.aspx");
+            }
             
-            if(IsPostBack == false)
+            if (IsPostBack == false)
             {
                 GridView1.DataBind();
             }
@@ -25,6 +32,7 @@ namespace Expense.UI
         {
             try
             {
+                
                 AddExpense addExpense = new AddExpense();
                 //addExpense.ExpenseDate = DateTime.Parse(TxtDate.Text);
                 AddExpenseService addExpenseService = new AddExpenseService();
@@ -33,8 +41,9 @@ namespace Expense.UI
                 addExpense.Note = TxtNote.Text.Trim();
                 addExpense.Amount = int.Parse(TxtAmount.Text);
                 addExpense.ExpenseCategory = DDLExpCat.Text.Trim();
-         
                 //Response.Write("<script>alert ('Record added')</script>");
+                
+                addExpenseService.AddExpEmail(addExpense);
                 addExpenseService.AddExp(addExpense);
                 LblAddExpMsg.Text = "Recoed Added";
                 GridView1.DataBind();
@@ -58,14 +67,14 @@ namespace Expense.UI
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            
+
             AddExpense addExpense = new AddExpense();
             AddExpenseService addExpenseService = new AddExpenseService();
-            
+
             addExpense.AddExpenseId = int.Parse(TextBox1.Text);
             DataTable dt = new DataTable();
             dt = addExpenseService.CheckExpIDExits(addExpense);
-            
+
             if (dt.Rows.Count <= 0)
             {
                 LblAddExpMsg.Text = "Invalid Exp ID";
@@ -82,8 +91,8 @@ namespace Expense.UI
                     DDLExpCat.Text = dt.Rows[0]["ExpenseCategory"].ToString();
                     TextBox1.Text = String.Empty;
                 }
-                
-               
+
+
             }
 
 
@@ -171,5 +180,20 @@ namespace Expense.UI
                 throw;
             }
         }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
+
+        
 }

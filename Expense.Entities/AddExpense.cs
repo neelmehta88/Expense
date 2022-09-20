@@ -11,6 +11,7 @@ namespace Expense.Entities
         public int AddExpenseId { get; set; } 
         public string ExpenseDate { get; set; }
         public string Note { get; set; }
+        public string Email{ get; set; }
         public int Amount { get; set; }
         public string ExpenseCategory { get; set; }
 

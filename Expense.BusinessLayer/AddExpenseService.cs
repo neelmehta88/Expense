@@ -33,6 +33,19 @@ namespace Expense.BusinessLayer
             }
         }
 
+        public void AddExpEmail(AddExpense addExpense)
+        {
+            try
+            {
+                repository.AddExpEmail(addExpense);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
        /* public void DeleteExp(int addExpenseID)
         {
             try
@@ -149,6 +162,11 @@ namespace Expense.BusinessLayer
 
                 throw;
             }
+        }
+
+        public void AddEmailToAddExp(AddExpense addExpense)
+        {
+            repository.AddEmailToAddExp(addExpense);
         }
 
     }

@@ -3,6 +3,7 @@ using Expense.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,7 +27,17 @@ namespace Expense.UI
                 adminMaster.UserName = txtUName.Text.Trim();
                 adminMaster.Password = txtPwd.Text.Trim();
                 adminLoginService.AdminLogin(adminMaster);
-                LblAdminEr.Text = "admin logedin....";
+                Session["UserName"] = txtUName.Text.ToString();
+                Session["Password"] = txtPwd.Text.ToString();
+                Session["role"] = "admin";
+
+                //LblAdminEr.Text = "admin logedin....";
+
+
+
+                Response.Redirect("AdminMemberMang.aspx");
+
+
 
                 //DataTable dt = new DataTable();
                 /* dt = adminLoginService.AdminLogin(adminMaster);

@@ -62,8 +62,6 @@
                                 </div>
                             </div>--%>
 
-                            <asp:HiddenField ID="HiddenField1" runat="server" />
-
                             <div class="col-6">
                                 <div class="form-group">
                                     <asp:Label ID="LblDate" runat="server" Text="Date"></asp:Label>
@@ -191,7 +189,7 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                <asp:GridView ID="GridView1" class="table table-striped table-bordered table-info" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="AddExpenseId" AllowSorting="True">
+                                <asp:GridView ID="GridView1" class="table table-striped table-bordered table-info" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="AddExpenseId" AllowSorting="True" OnRowDataBound="GridView1_RowDataBound">
                                     <Columns>
                                         <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" InsertVisible="False" ReadOnly="True" />
                                         <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" />
