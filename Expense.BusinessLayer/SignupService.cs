@@ -80,5 +80,18 @@ namespace Expense.BusinessLayer
                 throw;
             }
         }
+
+        public void UpdUserDetais(Signup signup)
+        {
+            try
+            {
+                repositoy.UpdUserDetais(signup);       
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

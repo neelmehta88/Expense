@@ -44,12 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Highcharts, Version=9.3.2.1, Culture=neutral, PublicKeyToken=90b74bd27a557bd3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Highsoft.Highcharts.10.2.0.1\lib\netstandard2.0\Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />

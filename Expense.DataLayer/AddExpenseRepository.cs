@@ -101,7 +101,7 @@ namespace Expense.DataLayer
         {
             try
             {
-                adapter = new SqlDataAdapter($"select * from AddExpense where AddExpenseID ={addExpense.AddExpenseId}",connection);
+                adapter = new SqlDataAdapter($"select * from AddExpense where AddExpenseID ={addExpense.AddExpenseId}", connection);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 return dt;
@@ -113,6 +113,20 @@ namespace Expense.DataLayer
             }
         }
 
+        /* public void GetExpById (AddExpense addExpense)
+         {
+             try
+             {
+                 command = new SqlCommand($"select * from AddExpense where AddExpenseID ={addExpense.AddExpenseId}",connection);
+                 connection.Open();
+                 command.ExecuteNonQuery()
+             }
+             catch (Exception)
+             {
+
+                 throw;
+             }
+         }*/
         public DataTable CheckExpIDExits(AddExpense addExpense)
         {
             try
@@ -144,6 +158,24 @@ namespace Expense.DataLayer
                 throw;
             }
         }
+
+        ///*public DataTable LoadData()
+        //{
+        //    try
+        //    {
+        //        command = new SqlCommand($"select ExpenseDate, Note, Amount, ExpenseCategory from AddExpense", connection);
+        //        adapter = new SqlDataAdapter(command);
+        //        DataTable dt = new DataTable();
+        //        adapter.Fill(dt);
+        //        return dt;
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;0
+        //    }
+        //}*/
 
         //---------------------------------------------------------------------------------------------------------------------------------
         /*commented code*/

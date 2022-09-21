@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="userProfile_UI.aspx.cs" Inherits="Expense.UI.userProfile_UI" %>
+
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            flex: 1 0 0%;
+            text-align: center;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
@@ -23,8 +31,8 @@
                             <div class="col">
                                 <center>
                                     <h2>User Profile</h2>
-                                    <span>Account Status- </span>
-                                    <asp:Label class="badge badge-pill badge-info" ID="Label3" runat="server" Text="Your Status" BorderStyle="None" Font-Bold="True" BorderColor="#3366CC" BackColor="#0099FF"></asp:Label>
+<%--                                    <span>Account Status- </span>
+                                    <asp:Label class="badge badge-pill badge-info" ID="Label3" runat="server" Text="Your Status" BorderStyle="None" Font-Bold="True" BorderColor="#3366CC" BackColor="#0099FF"></asp:Label>--%>
                                 </center>
 
                             </div>
@@ -66,7 +74,7 @@
 
                                 <div class="form-group">
                                     <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
-                                    <asp:TextBox ID="txtEmail" placeholder="Email" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" placeholder="Email" CssClass="form-control" runat="server" OnTextChanged="Page_Load" ReadOnly="True"></asp:TextBox>
                                 </div>
 
 
@@ -94,10 +102,12 @@
 
                                 <div class="form-group d-grid gap-2">
 
-                                    <asp:Button ID="BtnUpdate" class="btn btn-primary" runat="server" Text="Update" />
+                                    <asp:Button ID="BtnUpdate" class="btn btn-primary" runat="server" Text="Update" OnClick="BtnUpdate_Click" />
 
                                 </div>
                                 <asp:Label ID="LblMsg" runat="server" Text=""></asp:Label>
+
+                                <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPwd" ControlToValidate="TextBox1" ErrorMessage="New Password can not be same as Old Password" SetFocusOnError="True"></asp:CompareValidator>
 
                             </div>
                         </div>
@@ -149,8 +159,25 @@
                         </div>
 
                         <div class="row">
-                            <div class="col">
-                                <asp:GridView class="table table-striped table-bordered"  ID="GridView1" runat="server"></asp:GridView>
+                            <div class="auto-style1">
+                                <asp:Chart ID="Chart1" runat="server" CssClass="auto-style1" DataSourceID="SqlDataSource1" >
+                                    <Series>
+                                        <asp:Series Name="Series1" XValueMember="ExpenseCategory" YValueMembers="Amount"></asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                                    </ChartAreas>
+                                </asp:Chart>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                            <div class="text-center">
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT [ExpenseCategory], [Amount] FROM [AddExpense] WHERE ([Email] = @Email)">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="Email" SessionField="Email" Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
                             </div>
                         </div>
 

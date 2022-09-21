@@ -100,6 +100,23 @@ namespace Expense.DataLayer
 
         }
 
+        public void UpdUserDetais(Signup signup)
+        {
+            try
+            {
+                command = new SqlCommand($"update Signup set FName='{signup.FName}', UName='{signup.UName}', LName ='{signup.LName}', Password='{signup.Password}' where Email='{signup.Email}'", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        
+
 
 
 

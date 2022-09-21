@@ -17,11 +17,13 @@ namespace Expense.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            
             if (Session["Email"] == null)
             {
                 Response.Redirect("Homepage2.aspx");
             }
-            
+
             if (IsPostBack == false)
             {
                 GridView1.DataBind();
@@ -32,9 +34,9 @@ namespace Expense.UI
         {
             try
             {
-                
+
                 AddExpense addExpense = new AddExpense();
-            
+
                 AddExpenseService addExpenseService = new AddExpenseService();
                 addExpense.AddExpenseId = int.Parse(TxtAddExpID.Text);
                 addExpense.ExpenseDate = TxtDate.Text;
@@ -46,7 +48,7 @@ namespace Expense.UI
                 /* LinkButton linkButton = Master.FindControl("LinkButton7") as LinkButton;
                  addExpense.Email = linkButton.Text;*/
                 addExpense.Email = Session["Email"].ToString();
-         
+
 
                 addExpenseService.AddExp(addExpense);
                 LblAddExpMsg.Text = "Recoed Added";
@@ -185,7 +187,10 @@ namespace Expense.UI
             }
         }
 
-        
+        protected void TxtDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
         
