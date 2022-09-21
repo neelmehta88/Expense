@@ -66,10 +66,21 @@
                     </div>
                 </div>
 
-                <a href="HomePage.aspx"><strong><< Back to home&nbsp;
+                <strong>
+
+                <a href="HomePage.aspx"><< Back to home&nbsp;
+                </a>
+                <br />
+
+                <a href="HomePage.aspx">
                 <asp:Label ID="LblMsg" runat="server"></asp:Label>
-                </strong></a>
-                &nbsp;<hr />
+                </a>
+                </strong><asp:RequiredFieldValidator ID="EmailValidator" runat="server" Display="Dynamic" ErrorMessage="Please Enter Email Id" Font-Bold="True" Font-Underline="True" SetFocusOnError="True" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
+
+                <br />
+
+                <asp:RequiredFieldValidator ID="PwdValidator" runat="server" Display="Dynamic" ErrorMessage="Please Enter Password" Font-Bold="True" Font-Underline="True" SetFocusOnError="True" ControlToValidate="txtPwd"></asp:RequiredFieldValidator>
+                <hr />
                 
             </div> 
         </div>

@@ -45,9 +45,10 @@
                     Expense Manager 
                 </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button type="button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
 
                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ">
@@ -55,10 +56,7 @@
                             <a class="nav-link" href="Homepage2.aspx">Home</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">About Us</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Terms</a>
+                            &nbsp;
                         </li>
 
                     </ul>
@@ -69,17 +67,17 @@
                         </li>--%>
                         
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LBUserLogin" runat="server" OnClick="LBUserLogin_Click">User Login</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LBUserLogin" runat="server" OnClick="LBUserLogin_Click" CausesValidation="False">User Login</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LBSignup" runat="server" OnClick="LBSignup_Click" >Sign Up</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LBSignup" runat="server" OnClick="LBSignup_Click" CausesValidation="False" >Sign Up</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Logout</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CausesValidation="False">Logout</asp:LinkButton>
                         </li>
 
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Hello</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" OnClick="LinkButton7_Click" CausesValidation="False">Hello</asp:LinkButton>
                         </li>
                     </ul>
                 </div>
@@ -100,7 +98,7 @@
                 <div class="row">
                     <div class="col text-center">
                         <p>
-                            <asp:LinkButton ID="LBAdminLogin" runat="server" OnClick="LBAdminLogin_Click">Admin Login</asp:LinkButton>
+                            <asp:LinkButton ID="LBAdminLogin" runat="server" OnClick="LBAdminLogin_Click" CausesValidation="False">Admin Login</asp:LinkButton>
                         </p>
                     </div>
                 </div>

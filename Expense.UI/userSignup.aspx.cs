@@ -42,7 +42,7 @@ namespace Expense.UI
                     }
                     else
                     {
-                        LblMsg.Text = "Email alreayd exits";
+                        LblMsg.Text = "User alreayd exits";
                     }
                 }
 

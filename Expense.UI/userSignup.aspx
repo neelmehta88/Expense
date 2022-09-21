@@ -62,7 +62,7 @@
 
                                 <div class="form-group">
                                     <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
-                                    <asp:TextBox ID="txtEmail" placeholder="Email" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" placeholder="Email" CssClass="form-control" runat="server" TextMode="Email"></asp:TextBox>
                                 </div>
 
                                 <div class="form-group">
@@ -86,8 +86,18 @@
                     </div>
                 </div>
 
-                <a href="HomePage.aspx"><strong><< Back to home</strong></a>
-                <hr />
+                <strong>
+
+                <a href="Homepage2.aspx"><< Back to home</a><br />
+
+                
+                <asp:RequiredFieldValidator ID="FnameValidator" runat="server" ControlToValidate="txtFName" Display="Dynamic" ErrorMessage="Please Enter First Name" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="LnameValidator" runat="server" ControlToValidate="txtLName" Display="Dynamic" ErrorMessage="Please Enter Last Name" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="UnameValidator" runat="server" ControlToValidate="txtUName" Display="Dynamic" ErrorMessage="Please Enter User Name" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="EmailValidator" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="Please Enter Email" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="PwdValidator" runat="server" ControlToValidate="txtPwd" Display="Dynamic" ErrorMessage="Please Enter Password" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                
+                </strong>&nbsp;<hr />
 
             </div>
         </div>
