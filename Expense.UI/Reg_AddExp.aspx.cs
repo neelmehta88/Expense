@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,7 +18,7 @@ namespace Expense.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             
             if (Session["Email"] == null)
             {
@@ -26,6 +27,7 @@ namespace Expense.UI
 
             if (IsPostBack == false)
             {
+                //SqlDataSource2.ToString();
                 GridView1.DataBind();
             }
         }
@@ -78,6 +80,7 @@ namespace Expense.UI
             AddExpenseService addExpenseService = new AddExpenseService();
 
             addExpense.AddExpenseId = int.Parse(TextBox1.Text);
+            addExpense.Email = Session["Email"].ToString();
             DataTable dt = new DataTable();
             dt = addExpenseService.CheckExpIDExits(addExpense);
 
@@ -141,8 +144,9 @@ namespace Expense.UI
                 addExpense.Note = TxtNote.Text.Trim();
                 addExpense.Amount = int.Parse(TxtAmount.Text);
                 addExpense.ExpenseCategory = DDLExpCat.Text.Trim();
+                addExpense.Email = Session["Email"].ToString();
                 addExpenseService.UpdateExp(addExpense);
-                LblAddExpMsg.Text = "Recoed updated";
+                LblAddExpMsg.Text = "Record updated";
                 GridView1.DataBind();
 
                 TxtAddExpID.Text = String.Empty;
@@ -170,7 +174,8 @@ namespace Expense.UI
                 AddExpense addExpense = new AddExpense();
                 AddExpenseService addExpenseService = new AddExpenseService();
                 addExpense.AddExpenseId = int.Parse(TxtAddExpID.Text);
-                addExpenseService.DeleteExp(addExpense.AddExpenseId);
+                addExpense.Email = Session["Email"].ToString();
+                addExpenseService.DeleteExp(addExpense);
                 GridView1.DataBind();
 
                 TxtAddExpID.Text = String.Empty;
@@ -190,6 +195,54 @@ namespace Expense.UI
         protected void TxtDate_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void DDLExpCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //ExpenseCategorycs expenseCategorycs = new ExpenseCategorycs();
+            //AddExpenseService addExpenseService = new AddExpenseService();
+            //expenseCategorycs.ExpenseCategory = SqlDataSource2.ToString();
+
+        }
+
+        protected void ExportCSV_Click(object sender, EventArgs e)
+        {
+            AddExpense addExpense = new AddExpense();
+            AddExpenseService addExpenseService = new AddExpenseService();
+            DataSet ds = new DataSet();
+            ds = addExpenseService.ExportCSV(addExpense);
+            //GridView1.DataSource = ds;
+            GridView1.DataBind();
+            ExportGridToCSV();
+        }
+
+        private void ExportGridToCSV()
+        {
+            
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=Export.csv");
+            Response.Charset = "";
+            Response.ContentType = "application/text";
+            GridView1.AllowPaging = false;
+            GridView1.DataBind();
+            StringBuilder columnbind = new StringBuilder();
+            for (int k = 0; k < GridView1.Columns.Count; k++)
+            {
+                columnbind.Append(GridView1.Columns[k].HeaderText + ',');
+            }
+            columnbind.Append("\r\n");
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                for (int k = 0; k < GridView1.Columns.Count; k++)
+                {
+                    columnbind.Append(GridView1.Rows[i].Cells[k].Text + ',');
+                }
+                columnbind.Append("\r\n");
+            }
+            Response.Output.Write(columnbind.ToString());
+            Response.Flush();
+            Response.End();
         }
     }
 

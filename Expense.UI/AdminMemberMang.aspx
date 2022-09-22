@@ -10,10 +10,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <br />
-    <div class="conatiner-fluid">
+    <div class="container-fluid">
         <div class="row">
             <%-- Left side --%>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -148,7 +148,7 @@
 
 
             <%-- Right hand side part --%>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">

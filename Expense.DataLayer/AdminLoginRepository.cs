@@ -18,14 +18,14 @@ namespace Expense.DataLayer
         DataTable dt = new DataTable();
         SqlDataReader reader = null;
 
-        public void AdminLogin(AdminMaster adminMaster)
+        /*public void AdminLogin(AdminMaster adminMaster)
         {
             try
             {
                 
                 command = new SqlCommand($"Select * from AdminMaster where UserName='{adminMaster.UserName}' and Password='{adminMaster.Password}'", connection);
                 connection.Open();
-                reader = command.ExecuteReader();
+                command.ExecuteNonQuery();
               
 
                 //command.ExecuteNonQuery();
@@ -45,6 +45,22 @@ namespace Expense.DataLayer
             {
                 connection.Close();
 
+            }
+        }*/
+
+        public DataTable AdminLogin(AdminMaster adminMaster)
+        {
+            try
+            {
+                adapter = new SqlDataAdapter($"Select * from AdminMaster where UserName='{adminMaster.UserName}' and Password='{adminMaster.Password}'", connection);
+                adapter.Fill(dt);
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

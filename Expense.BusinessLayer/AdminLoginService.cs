@@ -18,11 +18,11 @@ namespace Expense.BusinessLayer
             repository = new AdminLoginRepository();
         }
 
-        public void AdminLogin(AdminMaster adminMaster)
+        public DataTable AdminLogin(AdminMaster adminMaster)
         {
             try
             {
-                 repository.AdminLogin(adminMaster);
+                 return repository.AdminLogin(adminMaster);
             }
             catch (Exception)
             {

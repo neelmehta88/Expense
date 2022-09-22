@@ -1,20 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Reg_AddExp.aspx.cs" Inherits="Expense.UI.Reg_AddExp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-
-<script src="ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- 
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-    });
-</script>
-
-    </asp:Content>
+    <script type="text/javascript">
+         $(document).ready(function () {
+             $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
+         });
+    </script>  
+    <style type="text/css">
+        .auto-style1 {
+            flex: 1 0 0%;
+            text-align: center;
+        }
+    </style>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
     <div class="container">
@@ -96,7 +93,7 @@
                                 <div class="form-group">
                                     <asp:Label ID="LblExpCat" runat="server" Text="Expense Category"></asp:Label>
                                     
-                                    <asp:DropDownList ID="DDLExpCat" CssClass="form-control" runat="server">
+                                    <asp:DropDownList ID="DDLExpCat" CssClass="form-control" runat="server" >
                                         
                                         <asp:ListItem Selected="True" Enabled="True">Select Expense Category</asp:ListItem>
                                         <asp:ListItem>Food</asp:ListItem>
@@ -118,6 +115,7 @@
                                         <asp:ListItem>Miscellaneous</asp:ListItem>
                                         <asp:ListItem>Others</asp:ListItem>
                                     </asp:DropDownList>
+                                    
                                     <br />
                                 </div>
                             </div>
@@ -158,7 +156,7 @@
 
                                 <asp:Label ID="LblAddExpMsg" runat="server"></asp:Label>
 
-                            <%--<asp:RequiredFieldValidator ID="ExpIDValidator" runat="server" ErrorMessage="Enter Expense ID" ControlToValidate="TxtAddExpID" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="ExpIDValidator" runat="server" ErrorMessage="Enter Expense ID" ControlToValidate="TxtAddExpID" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                         
                             <asp:RequiredFieldValidator ID="DateValidator" runat="server" ControlToValidate="TxtDate" ErrorMessage="Enter Date" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
 
@@ -166,7 +164,7 @@
 
                             <asp:RequiredFieldValidator ID="NoteValidator" runat="server" ControlToValidate="TxtNote" ErrorMessage="Enter Note" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="DDLExpCat" ErrorMessage="Select Category" Font-Bold="True" ForeColor="#FF6600"></asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="DDLExpCat" ErrorMessage="Select Category" Font-Bold="True" ForeColor="#FF6600"></asp:RequiredFieldValidator>
                             </div>
                         </div>
 
@@ -211,7 +209,7 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                <asp:GridView ID="GridView1" class="table table-striped table-bordered" runat="server"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1"  >
+                                <asp:GridView ID="GridView1" class="table table-striped table-bordered" runat="server"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True"  >
                                     <Columns>
                                         <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" />
                                         <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" DataFormatString="{0:dd-M-yyyy}"/>
@@ -220,6 +218,7 @@
                                         <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
                                     </Columns>
                                 </asp:GridView>
+
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT [AddExpenseId], [ExpenseDate], [Note], [Amount], [ExpenseCategory] FROM [AddExpense] WHERE ([Email] = @Email)">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="Email" SessionField="Email" Type="String" />
@@ -235,18 +234,25 @@
                             <%--<asp:Label ID="Label2" runat="server" Text="Expense ID"></asp:Label>--%>
                                     <div class="input-group">
                                         <asp:TextBox ID="TextBox1" placeholder="Expense ID" runat="server"  CssClass="form-control" TextMode="Number"></asp:TextBox>
-                                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Go</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click" CausesValidation="False">Go</asp:LinkButton>
                                       </div>
                         </div>
 
                         <div class="col-4">
-                                <asp:Button ID="BtnUpdate" runat="server" class="btn btn-sm btn-success w-100" Text="Update" Font-Size="Large" OnClick="BtnUpdate_Click" />
+                                <asp:Button ID="BtnUpdate" runat="server" class="btn btn-sm btn-success w-100" Text="Update" Font-Size="Large" OnClick="BtnUpdate_Click" CausesValidation="False" />
                             </div>
 
                             <div class="col-4">
-                                <asp:Button ID="BtnDelete" runat="server" class="btn btn-sm btn-danger w-100" Text="Delete" Font-Size="Large" OnClick="BtnDelete_Click" />
+                                <asp:Button ID="BtnDelete" runat="server" class="btn btn-sm btn-danger w-100" Text="Delete" Font-Size="Large" OnClick="BtnDelete_Click" CausesValidation="False" />
                                 <br />
                             </div>
+                    </div>
+                    <p></p>
+                    <div class="row">
+                        <div class="col w-100">
+                            <asp:Button ID="ExportCSV" runat="server" class="btn btn-sm btn-warning w-100" Text="Export Record" CausesValidation="False" OnClick="ExportCSV_Click" />
+
+                        </div>
                     </div>
 
 

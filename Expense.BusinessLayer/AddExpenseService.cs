@@ -138,11 +138,11 @@ namespace Expense.BusinessLayer
             }
         }
 
-        public void DeleteExp(int addExpenseID)
+        public void DeleteExp(AddExpense addExpense)
         {
             try
             {
-                 repository.DeleteExp(addExpenseID);
+                 repository.DeleteExp(addExpense);
             }
             catch (Exception)
             {
@@ -166,7 +166,41 @@ namespace Expense.BusinessLayer
 
         public void AddEmailToAddExp(AddExpense addExpense)
         {
-            repository.AddEmailToAddExp(addExpense);
+            try
+            {
+                repository.AddEmailToAddExp(addExpense);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void SelectExpCat(ExpenseCategorycs expenseCategorycs)
+        {
+            try
+            {
+                repository.SelectExpCat(expenseCategorycs);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataSet ExportCSV(AddExpense addExpense)
+        {
+            try
+            {
+                return repository.ExportCSV(addExpense);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }

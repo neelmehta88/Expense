@@ -31,6 +31,8 @@
                             <h6>Such as Adding the Expense</h6>
                             <h6>Updating Expense</h6>
                             <h6>Delete Expense </h6>
+                            <h6>Analysis of Expense </h6>
+                            <h6>Export Expense Report</h6>
                         </div>
 
 

@@ -68,13 +68,13 @@
 
                 <strong>
 
-                <a href="HomePage.aspx"><< Back to home&nbsp;
+                <a href="Homepage2.aspx"><< Back to home&nbsp;
                 </a>
                 <br />
 
-                <a href="HomePage.aspx">
+               <%-- <a href="HomePage.aspx">
                 <asp:Label ID="LblMsg" runat="server"></asp:Label>
-                </a>
+                </a>--%>
                 </strong><asp:RequiredFieldValidator ID="EmailValidator" runat="server" Display="Dynamic" ErrorMessage="Please Enter Email Id" Font-Bold="True" Font-Underline="True" SetFocusOnError="True" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
 
                 <br />

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace Expense.UI
 {
@@ -34,7 +35,7 @@ namespace Expense.UI
                 dt = signupService.Login(signup);
                 if(dt.Rows.Count > 0)
                 {
-                    //Response.Write("<script>alert('" + dt.Rows[0]["Email"].ToString() + "');</script>") ;
+                   
                     Session["FName"] = dt.Rows[0]["FName"].ToString();
                     Session["LName"] = dt.Rows[0]["LName"].ToString();
                     Session["UName"] = dt.Rows[0]["UName"].ToString();

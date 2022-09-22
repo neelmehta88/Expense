@@ -60,7 +60,7 @@ namespace Expense.DataLayer
             {
                 //var email =Session["Email"].ToString();
                
-                command = new SqlCommand($"update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}' where AddExpenseId={addExpense.AddExpenseId} ", connection);
+                command = new SqlCommand($"update AddExpense set ExpenseDate='{addExpense.ExpenseDate}', Note='{addExpense.Note}', Amount={addExpense.Amount}, ExpenseCategory ='{addExpense.ExpenseCategory}' where AddExpenseId={addExpense.AddExpenseId} and Email='{addExpense.Email}' ", connection);
              
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -78,11 +78,11 @@ namespace Expense.DataLayer
             }
         }
 
-        public void DeleteExp(int addExpenseID)
+        public void DeleteExp(AddExpense addExpense)
         {
             try
             {
-                command = new SqlCommand($"Delete from AddExpense where AddExpenseId={addExpenseID}", connection);
+                command = new SqlCommand($"Delete from AddExpense where AddExpenseId={addExpense.AddExpenseId} and Email='{addExpense.Email}'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -101,7 +101,7 @@ namespace Expense.DataLayer
         {
             try
             {
-                adapter = new SqlDataAdapter($"select * from AddExpense where AddExpenseID ={addExpense.AddExpenseId}", connection);
+                adapter = new SqlDataAdapter($"select * from AddExpense where AddExpenseID ={addExpense.AddExpenseId} and Email='{addExpense.Email}'", connection);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 return dt;
@@ -151,6 +151,45 @@ namespace Expense.DataLayer
                 connection.Open();
                 SqlDataReader dr = command.ExecuteReader();
                 command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void SelectExpCat(ExpenseCategorycs expenseCategorycs)
+        {
+            try
+            {
+                command = new SqlCommand($"select ExpenseCategory from ExpenseCategorycs", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        
+        public DataSet ExportCSV(AddExpense addExpense)
+        {
+            try
+            {
+                command = new SqlCommand($"Select AddExpenseId, ExpenseDate, Note, Amount from AddExpense where Email='{addExpense.Email}'", connection);
+                connection.Open();
+                adapter = new SqlDataAdapter($"Select AddExpenseId, ExpenseDate, Note, Amount from AddExpense where Email='{addExpense.Email}'",connection);
+               
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                return ds;
+
             }
             catch (Exception)
             {

@@ -7,6 +7,11 @@
             flex: 1 0 0%;
             text-align: center;
         }
+        .auto-style2 {
+            flex: 1 0 0%;
+            text-align: center;
+            background-color: #CCFF99;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -160,26 +165,40 @@
 
                         <div class="row">
                             <div class="auto-style1">
-                                <asp:Chart ID="Chart1" runat="server" CssClass="auto-style1" DataSourceID="SqlDataSource1" >
+                                <asp:Chart ID="Chart1" runat="server" CssClass="auto-style2" DataSourceID="SqlDataSource1" Style="font-size: x-large"  BackGradientStyle="HorizontalCenter" AntiAliasing="All">
+
                                     <Series>
-                                        <asp:Series Name="Series1" XValueMember="ExpenseCategory" YValueMembers="Amount"></asp:Series>
+                                        <asp:Series Name="Series1" XValueMember="ExpenseCategory" YValueMembers="Total" ChartType="Doughnut" BorderColor="#003300" BorderDashStyle="Solid" BorderWidth="2"></asp:Series>
                                     </Series>
                                     <ChartAreas>
-                                        <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                                        <asp:ChartArea Name="ChartArea1" Area3DStyle-Enable3D="True" BorderWidth="2">
+<Area3DStyle Enable3D="True"></Area3DStyle>
+                                        </asp:ChartArea>
                                     </ChartAreas>
+                                    <Titles>
+                                        <asp:Title Name="Title1" Text="Summary of Your Expense">
+                                        </asp:Title>
+                                    </Titles>
                                 </asp:Chart>
                             </div>
                         </div>
 
                          <div class="row">
                             <div class="text-center">
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT [ExpenseCategory], [Amount] FROM [AddExpense] WHERE ([Email] = @Email)">
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ExpManagementConnection %>" SelectCommand="SELECT ExpenseCategory, SUM(Amount) AS Total FROM AddExpense WHERE (Email = @Email) GROUP BY ExpenseCategory">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="Email" SessionField="Email" Type="String" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
                             </div>
                         </div>
+
+                     <%--   <div class="row">
+                            <div class="col mx-auto">
+                                <asp:Button ID="ExportCSV" runat="server" Text="Export Record" OnClick="ExportCSV_Click" />
+
+                            </div>
+                        </div>--%>
 
                         <%--<div class="row">
                             <div class="col-md-6">

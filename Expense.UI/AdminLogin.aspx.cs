@@ -15,7 +15,7 @@ namespace Expense.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void BtnAdminLogin_Click(object sender, EventArgs e)
@@ -26,30 +26,19 @@ namespace Expense.UI
                 AdminMaster adminMaster = new AdminMaster();    
                 adminMaster.UserName = txtUName.Text.Trim();
                 adminMaster.Password = txtPwd.Text.Trim();
-                adminLoginService.AdminLogin(adminMaster);
-                Session["UserName"] = txtUName.Text.ToString();
-                Session["Password"] = txtPwd.Text.ToString();
-                Session["role"] = "admin";
-
-                //LblAdminEr.Text = "admin logedin....";
-
-
-
-                Response.Redirect("AdminMemberMang.aspx");
-
-
-
-                //DataTable dt = new DataTable();
-                /* dt = adminLoginService.AdminLogin(adminMaster);
-                 if(dt.Rows.Count > 0)
-                 {
-                     Response.Write("<script>alert(' admin logedin....')</script>");
-                     //LblAdminEr.Text = "admin logedin....";
-                 }
-                 else
-                 {
-                     LblAdminEr.Text = "Check credentials ";
-                 }*/
+                DataTable dt = new DataTable();
+                dt = adminLoginService.AdminLogin(adminMaster);
+                if (dt.Rows.Count > 0)
+                {
+                    Session["UserName"] = dt.Rows[0]["UserName"].ToString();
+                    Session["role"] = "admin";
+                    Response.Redirect("AdminMemberMang.aspx");
+                    LblAdminEr.Text = String.Empty; 
+                }
+                else
+                {
+                    LblAdminEr.Text = "Check credentials ";
+                }
 
 
 
@@ -60,5 +49,7 @@ namespace Expense.UI
                 LblAdminEr.Text = ex.Message;
             }
         }
+
+       
     }
 }
