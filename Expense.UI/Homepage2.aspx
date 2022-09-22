@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Homepage2.aspx.cs" Inherits="Expense.UI.Homepage2" %>
+﻿<%@ Page Title="Homepage" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Homepage2.aspx.cs" Inherits="Expense.UI.Homepage2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .container-fluid{

@@ -1,10 +1,25 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Reg_AddExp.aspx.cs" Inherits="Expense.UI.Reg_AddExp" %>
+﻿<%@ Page Title="Add Expense" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="Reg_AddExp.aspx.cs" Inherits="Expense.UI.Reg_AddExp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-         $(document).ready(function () {
-             $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-         });
-    </script>  
+    <%--datatable cdn links--%>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
+      });
+  </script>
     <style type="text/css">
         .auto-style1 {
             flex: 1 0 0%;
@@ -16,7 +31,7 @@
     <br />
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -180,7 +195,7 @@
         </div>
 
 
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -209,13 +224,15 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                <asp:GridView ID="GridView1" class="table table-striped table-bordered" runat="server"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True"  >
+                                <asp:GridView ID="GridView1" class="table table-striped table-bordered" runat="server"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+
+                                  
                                     <Columns>
-                                        <asp:BoundField DataField="AddExpenseId" HeaderText="AddExpenseId" SortExpression="AddExpenseId" />
-                                        <asp:BoundField DataField="ExpenseDate" HeaderText="ExpenseDate" SortExpression="ExpenseDate" DataFormatString="{0:dd-M-yyyy}"/>
+                                        <asp:BoundField DataField="AddExpenseId" HeaderText="Expense ID" SortExpression="AddExpenseId" />
+                                        <asp:BoundField DataField="ExpenseDate" HeaderText="Expense Date" SortExpression="ExpenseDate" DataFormatString="{0:dd-M-yyyy}" />
                                         <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                                         <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
-                                        <asp:BoundField DataField="ExpenseCategory" HeaderText="ExpenseCategory" SortExpression="ExpenseCategory" />
+                                        <asp:BoundField DataField="ExpenseCategory" HeaderText="Expense Category" SortExpression="ExpenseCategory" />
                                     </Columns>
                                 </asp:GridView>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="userProfile_UI.aspx.cs" Inherits="Expense.UI.userProfile_UI" %>
+﻿<%@ Page Title="User Profile" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="userProfile_UI.aspx.cs" Inherits="Expense.UI.userProfile_UI" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -148,7 +148,7 @@
                                 <center>
                                     <h2>Expense Summary</h2>
                                     <span>Account Status- </span>
-                                    <asp:Label class="badge badge-pill badge-info" ID="Label4" runat="server" Text="Your Status" BorderStyle="None" Font-Bold="True" BorderColor="#3366CC" BackColor="#0099FF"></asp:Label>
+                                    <asp:Label class="badge badge-pill" ID="Label4" runat="server" Text="Your Status" ></asp:Label>
                                 </center>
 
                             </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="AdminMemberMang.aspx.cs" Inherits="Expense.UI.AdminMemberMang" %>
+﻿<%@ Page Title="Admin Member List" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="AdminMemberMang.aspx.cs" Inherits="Expense.UI.AdminMemberMang" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {

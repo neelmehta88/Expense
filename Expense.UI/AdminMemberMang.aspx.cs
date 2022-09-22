@@ -58,7 +58,7 @@ namespace Expense.UI
                 AdminLoginService adminLoginService = new AdminLoginService();
                 signup.AccountStatus = txtAccountStat.Text;
                 signup.memberID = int.Parse(txtMemberID.Text);
-                string active = "active";
+                string active = "Active";
                 adminLoginService.UpdMemStat(active, int.Parse(txtMemberID.Text));
                
                 GridView1.DataBind();

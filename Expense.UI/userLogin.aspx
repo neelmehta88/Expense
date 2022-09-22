@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="userLogin.aspx.cs" Inherits="Expense.UI.userLogin" %>
+﻿<%@ Page Title="User Login" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="userLogin.aspx.cs" Inherits="Expense.UI.userLogin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -76,6 +76,11 @@
                 <asp:Label ID="LblMsg" runat="server"></asp:Label>
                 </a>--%>
                 </strong><asp:RequiredFieldValidator ID="EmailValidator" runat="server" Display="Dynamic" ErrorMessage="Please Enter Email Id" Font-Bold="True" Font-Underline="True" SetFocusOnError="True" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
+
+                <strong>
+
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                </strong>
 
                 <br />
 

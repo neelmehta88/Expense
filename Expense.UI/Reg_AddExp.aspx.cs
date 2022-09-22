@@ -25,11 +25,11 @@ namespace Expense.UI
                 Response.Redirect("Homepage2.aspx");
             }
 
-            if (IsPostBack == false)
+            /*if (IsPostBack == false)
             {
                 //SqlDataSource2.ToString();
                 GridView1.DataBind();
-            }
+            }*/
         }
 
         protected void BtnAddExp_Click(object sender, EventArgs e)
@@ -244,6 +244,8 @@ namespace Expense.UI
             Response.Flush();
             Response.End();
         }
+
+       
     }
 
         

@@ -44,6 +44,21 @@ namespace Expense.UI
                 txtPwd.Text = dt.Rows[0]["Password"].ToString();
                 txtUName.Text = dt.Rows[0]["UName"].ToString();
 
+                Label4.Text = dt.Rows[0]["AccountStatus"].ToString();
+                if (dt.Rows[0]["AccountStatus"].ToString() == "Active")
+                {
+                    Label4.Attributes.Add("class", "badge badge-pill badge-success bg-success");
+                }
+                else if(dt.Rows[0]["AccountStatus"].ToString() == "Pending")
+                {
+                    Label4.Attributes.Add("class", "badge badge-pill badge-success bg-warning");
+                }
+                else if (dt.Rows[0]["AccountStatus"].ToString() == "Disable")
+                {
+                    Label4.Attributes.Add("class", "badge badge-pill badge-success bg-danger");
+                }
+
+
 
             }
         }

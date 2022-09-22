@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="Expense.UI.AdminLogin" %>
+﻿<%@ Page Title="Admin Login" Language="C#" MasterPageFile="~/Reg.Master" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="Expense.UI.AdminLogin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -74,7 +74,9 @@
                 <a href="HomePage.aspx">
                 <asp:Label ID="LblAdminEr" runat="server"></asp:Label>
                 </a>
-                </strong>&nbsp;<hr />
+                </strong>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUName" Display="Dynamic" ErrorMessage="Enter User Name" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPwd" Display="Dynamic" ErrorMessage="Enter Password" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <hr />
 
             </div>
         </div>

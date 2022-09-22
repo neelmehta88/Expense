@@ -33,24 +33,36 @@ namespace Expense.UI
                 signup.Password = txtPwd.Text.Trim();
                 DataTable dt = new DataTable();
                 dt = signupService.Login(signup);
-                if(dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
-                   
                     Session["FName"] = dt.Rows[0]["FName"].ToString();
                     Session["LName"] = dt.Rows[0]["LName"].ToString();
                     Session["UName"] = dt.Rows[0]["UName"].ToString();
                     Session["Email"] = dt.Rows[0]["Email"].ToString();
                     Session["role"] = "user";
-                    Response.Redirect("Reg_AddExp.aspx");
+                    
+
+                    if (dt.Rows[0]["AccountStatus"].ToString() == "Active" || dt.Rows[0]["AccountStatus"].ToString() == "Pending")
+                    {
+                        //dt = signupService.Login(signup);
+                        Response.Redirect("Reg_AddExp.aspx");
+                    }
+                    else if(dt.Rows[0]["AccountStatus"].ToString() == "Disable")
+                    {
+                        Label2.Text = "Your account is disbale kindly contact the Admin";
+                        Session.Clear();
+
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Invalid Credentials');</script>");
+
+                    }
 
 
                 }
                 
-                else
-                {
-                    Response.Write("<script>alert('Invalid Credentials');</script>");
-                    
-                }
+                
                
             }
             catch (Exception)
