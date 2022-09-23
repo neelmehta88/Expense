@@ -210,7 +210,7 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                <h5>Expense Record>
+                                <h5>Expense Record </h5>
                             </center>
                         </div>
                     </div>

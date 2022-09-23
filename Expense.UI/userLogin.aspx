@@ -79,7 +79,7 @@
 
                 <strong>
 
-                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="Label2" runat="server"></asp:Label>
                 </strong>
 
                 <br />
